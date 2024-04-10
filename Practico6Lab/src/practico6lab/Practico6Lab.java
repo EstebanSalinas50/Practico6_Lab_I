@@ -18,7 +18,7 @@ public class Practico6Lab {
         System.out.println("Msj");
         System.out.println("Preparado para la accion");
         System.out.println("Blas");
-        
+        System.out.println("AAAAAAAAAAAAAAAAAAAA!!!!!");
     }
     
 }
