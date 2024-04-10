@@ -16,6 +16,7 @@ public class Practico6Lab {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("Msj");
+        System.out.println("Preparado para la accion");
     }
     
 }
