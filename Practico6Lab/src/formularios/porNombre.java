@@ -4,17 +4,22 @@
  */
 package formularios;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Deb APBT
  */
 public class porNombre extends javax.swing.JInternalFrame {
-
+    
+    private DefaultTableModel modelo = new DefaultTableModel();
+    
     /**
      * Creates new form porNombre
      */
     public porNombre() {
         initComponents();
+        titulosDeTabla();
     }
 
     /**
@@ -103,4 +108,14 @@ public class porNombre extends javax.swing.JInternalFrame {
     private javax.swing.JTable jtTabla;
     private javax.swing.JTextField jtfCampoDeBusqueda;
     // End of variables declaration//GEN-END:variables
+
+    private void titulosDeTabla(){
+    
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Stock");
+        modelo.addColumn("Rubro");
+        jtTabla.setModel(modelo);
+    }
+    
 }
