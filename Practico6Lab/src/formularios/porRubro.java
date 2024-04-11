@@ -5,6 +5,7 @@
 package formularios;
 
 import javax.swing.table.DefaultTableModel;
+import practico6lab.Producto;
 
 /**
  *
@@ -24,6 +25,7 @@ public class porRubro extends javax.swing.JInternalFrame {
     public porRubro() {
         initComponents();
         armarCabecera();
+        llenarCombo();
     }
 
     /**
@@ -37,18 +39,22 @@ public class porRubro extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jcbCategoria = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtTabla = new javax.swing.JTable();
+        jtProductos = new javax.swing.JTable();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel1.setText("Listado de Productos por Rubro");
 
         jLabel2.setText("Elija un rubro:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Comestible", "Limpieza", "Perfumeria" }));
+        jcbCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbCategoriaActionPerformed(evt);
+            }
+        });
 
-        jtTabla.setModel(new javax.swing.table.DefaultTableModel(
+        jtProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -59,7 +65,7 @@ public class porRubro extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jtTabla);
+        jScrollPane1.setViewportView(jtProductos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,7 +79,7 @@ public class porRubro extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jcbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel1)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
@@ -88,7 +94,7 @@ public class porRubro extends javax.swing.JInternalFrame {
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(22, Short.MAX_VALUE))
@@ -97,13 +103,32 @@ public class porRubro extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jcbCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCategoriaActionPerformed
+        // TODO add your handling code here:
+       borrarFilas();
+       String cat = (String)jcbCategoria.getSelectedItem();
+       for(Producto prod: Menu.listaProductos){
+           
+           if(prod.getCategoria().equals(cat)){
+           
+               modelo.addRow(new Object[]{
+                    prod.getCodigo(),
+                    prod.getDescripcion(),
+                    prod.getPrecio(),
+                    prod.getStock()
+                });
+           }
+           
+       }
+    }//GEN-LAST:event_jcbCategoriaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jtTabla;
+    private javax.swing.JComboBox<String> jcbCategoria;
+    private javax.swing.JTable jtProductos;
     // End of variables declaration//GEN-END:variables
     
     private void armarCabecera(){
@@ -112,7 +137,24 @@ public class porRubro extends javax.swing.JInternalFrame {
         modelo.addColumn("Descripcion");
         modelo.addColumn("Precio");
         modelo.addColumn("Stock");
-        jtTabla.setModel(modelo);
+        jtProductos.setModel(modelo);
     }
+    
+     private void llenarCombo() {
+        jcbCategoria.addItem("Comestible");
+        jcbCategoria.addItem("Limpieza");
+        jcbCategoria.addItem("Perfumeria");
+        
+    }
+     
+     private void borrarFilas() {
+        
+        int filas=jtProductos.getRowCount() -1;
+        
+        for(int f=filas;f>=0 ; f--){
+            
+            modelo.removeRow(f);
+        }
+        }
 
 }
