@@ -8,7 +8,7 @@ package practico6lab;
  *
  * @author esteb
  */
-public class Producto {
+public class Producto implements Comparable<Producto> {
     
     private int codigo;
     private String descripcion;
@@ -67,6 +67,12 @@ public class Producto {
     @Override
     public String toString() {
         return "Producto{" + "codigo=" + codigo + ", descripcion=" + descripcion + ", precio=" + precio + ", stock=" + stock + ", categoria=" + categoria + '}';
+    }
+
+    @Override
+    public int compareTo(Producto o) {
+       
+        return Integer.compare(this.codigo, o.codigo);
     }
     
     
