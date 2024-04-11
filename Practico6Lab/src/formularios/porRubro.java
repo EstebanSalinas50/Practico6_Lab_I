@@ -105,6 +105,7 @@ public class porRubro extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtProductos;
     // End of variables declaration//GEN-END:variables
+    
     private void armarCabecera(){
     
         modelo.addColumn("Codigo");
