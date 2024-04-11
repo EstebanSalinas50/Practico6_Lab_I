@@ -4,17 +4,28 @@
  */
 package formularios;
 
+import java.util.TreeSet;
+import practico6lab.Producto;
+
 /**
  *
  * @author Blas
  */
 public class Menu extends javax.swing.JFrame {
-
+    
+    public static TreeSet<Producto> listaProductos = new TreeSet<>();
+    
+    
     /**
      * Creates new form Menu
      */
     public Menu() {
         initComponents();
+        cargarProductos();
+    }
+    
+    public TreeSet<Producto> getlistaProductos(){
+        return listaProductos;
     }
 
     /**
@@ -174,4 +185,13 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmPorNombre;
     private javax.swing.JMenuItem jmPorRubro;
     // End of variables declaration//GEN-END:variables
+    
+    private void cargarProductos(){
+        listaProductos.add(new Producto(00, "arroz", 45, 125, "Comida"));
+        listaProductos.add(new Producto(01, "aceite", 65, 3, "Comida"));
+        listaProductos.add(new Producto(02, "cafe", 50, 9, "Comida"));
+        listaProductos.add(new Producto(03, "lavandina", 125, 25, "Limpieza"));
+    }
+    
+
 }

@@ -5,6 +5,7 @@
 package formularios;
 
 import javax.swing.table.DefaultTableModel;
+import practico6lab.Producto;
 
 /**
  *
@@ -20,6 +21,7 @@ public class porNombre extends javax.swing.JInternalFrame {
     public porNombre() {
         initComponents();
         titulosDeTabla();
+        
     }
 
     /**
@@ -53,12 +55,30 @@ public class porNombre extends javax.swing.JInternalFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jtTabla.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtTablaKeyReleased(evt);
+            }
+        });
         jScrollPane2.setViewportView(jtTabla);
 
         jtfCampoDeBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfCampoDeBusquedaActionPerformed(evt);
+            }
+        });
+        jtfCampoDeBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtfCampoDeBusquedaKeyReleased(evt);
             }
         });
 
@@ -100,6 +120,26 @@ public class porNombre extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfCampoDeBusquedaActionPerformed
 
+    private void jtTablaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtTablaKeyReleased
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jtTablaKeyReleased
+
+    private void jtfCampoDeBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCampoDeBusquedaKeyReleased
+        // TODO add your handling code here:
+        
+        borrarFilas();
+        
+        for (Producto variable : Menu.listaProductos) {
+            
+            if(variable.getDescripcion().startsWith(jtfCampoDeBusqueda.getText())){
+                modelo.addRow( new Object [] {variable.getCodigo(), variable.getDescripcion(), variable.getPrecio(), variable.getCategoria(), variable.getCategoria() } );
+            }
+
+        }
+        
+    }//GEN-LAST:event_jtfCampoDeBusquedaKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -114,8 +154,19 @@ public class porNombre extends javax.swing.JInternalFrame {
         modelo.addColumn("Codigo");
         modelo.addColumn("Nombre");
         modelo.addColumn("Stock");
-        modelo.addColumn("Rubro");
+        modelo.addColumn("Precio");
+        modelo.addColumn("Categoria");
         jtTabla.setModel(modelo);
     }
+    
+    private void borrarFilas() {
+        
+        int filas=jtTabla.getRowCount() -1;
+        
+        for(int f=filas;f>=0 ; f--){
+            
+            modelo.removeRow(f);
+        }
+        }
     
 }
