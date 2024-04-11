@@ -31,7 +31,7 @@ public class Menu extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jmPorRubro = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
 
@@ -67,15 +67,15 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        jmPorRubro.setText("Por Rubro");
-        jMenu2.add(jmPorRubro);
-
-        jMenuItem3.setText("Pro Nombre...");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem2.setText("Por Rubro");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                jMenuItem2ActionPerformed(evt);
             }
         });
+        jMenu2.add(jMenuItem2);
+
+        jMenuItem3.setText("Pro Nombre...");
         jMenu2.add(jMenuItem3);
 
         jMenuItem4.setText("Por Precio...");
@@ -102,22 +102,17 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu2ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
         porRubro bpr= new porRubro();
         bpr.setVisible(true);
         escritorio.add(bpr);
         escritorio.moveToFront(bpr);
-    }//GEN-LAST:event_jMenu2ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        escritorio.removeAll();
-        escritorio.repaint();
-        porNombre bpn= new porNombre();
-        bpn.setVisible(true);
-        escritorio.add(bpn);
-        escritorio.moveToFront(bpn);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
@@ -170,8 +165,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jmPorRubro;
     // End of variables declaration//GEN-END:variables
 }
