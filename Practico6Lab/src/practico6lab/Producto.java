@@ -9,7 +9,7 @@ package practico6lab;
  * @author esteb
  */
 public class Producto implements Comparable<Producto> {
-    
+
     private int codigo;
     private String descripcion;
     private double precio;
@@ -71,11 +71,8 @@ public class Producto implements Comparable<Producto> {
 
     @Override
     public int compareTo(Producto o) {
-       
+
         return Integer.compare(this.codigo, o.codigo);
     }
-    
-    
-    
-    
+
 }

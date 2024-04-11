@@ -13,6 +13,7 @@ import practico6lab.Producto;
  * @author esteb
  */
 public class GestionProductos extends javax.swing.JInternalFrame {
+
     private TreeSet<Producto> listaProductos = new TreeSet<>();
 
     /**
@@ -43,7 +44,7 @@ public class GestionProductos extends javax.swing.JInternalFrame {
         Eliminar = new javax.swing.JButton();
         Salir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        Buscar = new javax.swing.JButton();
         Descripcion = new javax.swing.JTextField();
         Precio = new javax.swing.JTextField();
         Stock = new javax.swing.JTextField();
@@ -75,6 +76,7 @@ public class GestionProductos extends javax.swing.JInternalFrame {
         });
 
         Eliminar.setText("Eliminar");
+        Eliminar.setEnabled(false);
         Eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EliminarActionPerformed(evt);
@@ -91,7 +93,12 @@ public class GestionProductos extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
         jLabel1.setText("Gestion de Productos");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/lupa.jpg"))); // NOI18N
+        Buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/lupa.jpg"))); // NOI18N
+        Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -124,7 +131,7 @@ public class GestionProductos extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jButton1)
+                                            .addComponent(Buscar)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(Guardar)
                                                 .addGap(77, 77, 77)
@@ -146,7 +153,7 @@ public class GestionProductos extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -177,44 +184,78 @@ public class GestionProductos extends javax.swing.JInternalFrame {
 
     private void NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoActionPerformed
         // TODO add your handling code here:
+        Codigo.setText("");
+        Descripcion.setText("");
+        Precio.setText("");
+        jCombo.setSelectedItem("");
+        Stock.setText("");
     }//GEN-LAST:event_NuevoActionPerformed
 
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
         // TODO add your handling code here:
-        
-        String descrip=Descripcion.getText();      
-        String categoria=(String)jCombo.getSelectedItem();          
-        if(descrip.isEmpty()||categoria.isEmpty()){
-             JOptionPane.showMessageDialog(this, " Los campos tienen que estar completos");
-             return;
+
+        String descrip = Descripcion.getText();
+        String categoria = (String) jCombo.getSelectedItem();
+        if (descrip.isEmpty() || categoria.isEmpty()) {
+            JOptionPane.showMessageDialog(this, " Los campos tienen que estar completos");
+            return;
         }
-        
-        try{
-            int codigo=Integer.parseInt(Codigo.getText());
-             double precio=Double.parseDouble(Precio.getText());
-              int stock=Integer.parseInt(Stock.getText());
-              Producto produ=new Producto(codigo, descrip, precio, stock, categoria);
-              listaProductos.add(produ);
-               JOptionPane.showMessageDialog(this, " Producto guardado");
-              
-        }catch(NumberFormatException e){
-              JOptionPane.showMessageDialog(this, " Debe ingresar numero no letras");
+
+        try {
+            int codigo = Integer.parseInt(Codigo.getText());
+            double precio = Double.parseDouble(Precio.getText());
+            int stock = Integer.parseInt(Stock.getText());
+            Producto produ = new Producto(codigo, descrip, precio, stock, categoria);
+            listaProductos.add(produ);
+            JOptionPane.showMessageDialog(this, " Producto guardado");
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, " Debe ingresar numero no letras");
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_GuardarActionPerformed
 
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
         // TODO add your handling code here:
+
+        int code = Integer.parseInt(Codigo.getText());
+
+        for (Producto elementos : listaProductos) {
+            if (elementos.getCodigo() == code) {
+                listaProductos.remove(elementos);
+                JOptionPane.showMessageDialog(this, " Producto eliminado");
+                return;
+            }
+
+        }
+        JOptionPane.showMessageDialog(this, " Producto no encontrado");
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SalirActionPerformed
 
+    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
+        // TODO add your handling code here:
+        
+            int code = Integer.parseInt(Codigo.getText());
+            for (Producto elementos : listaProductos) {
+                if (elementos.getCodigo() == code) {
+                  Descripcion.setText(elementos.getDescripcion());
+                  Precio.setText(elementos.getPrecio()+"");
+                  jCombo.setSelectedItem(elementos.getCategoria());
+                  Stock.setText(elementos.getStock()+"");
+                  Eliminar.setEnabled(true);
+                  return;
+                }
+            }
+    }//GEN-LAST:event_BuscarActionPerformed
+  
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Buscar;
     private javax.swing.JTextField Codigo;
     private javax.swing.JTextField Descripcion;
     private javax.swing.JButton Eliminar;
@@ -223,7 +264,6 @@ public class GestionProductos extends javax.swing.JInternalFrame {
     private javax.swing.JTextField Precio;
     private javax.swing.JButton Salir;
     private javax.swing.JTextField Stock;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jCodigo;
     private javax.swing.JComboBox<String> jCombo;
     private javax.swing.JLabel jDescripcion;
@@ -233,6 +273,4 @@ public class GestionProductos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jStock;
     // End of variables declaration//GEN-END:variables
 
-    
-    
 }
