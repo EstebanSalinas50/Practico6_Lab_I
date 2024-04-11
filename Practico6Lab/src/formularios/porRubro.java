@@ -46,7 +46,7 @@ public class porRubro extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Elija un rubro:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Comestible", "Limpieza", "Perfumeria" }));
 
         jtTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
