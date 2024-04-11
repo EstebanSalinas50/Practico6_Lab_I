@@ -31,7 +31,7 @@ public class Menu extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jmiPorRubro = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
 
@@ -62,8 +62,13 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem2.setText("Por Rubro");
-        jMenu2.add(jMenuItem2);
+        jmiPorRubro.setText("Por Rubro");
+        jmiPorRubro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiPorRubroActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmiPorRubro);
 
         jMenuItem3.setText("Pro Nombre...");
         jMenu2.add(jMenuItem3);
@@ -92,13 +97,17 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu2ActionPerformed
+
+    private void jmiPorRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPorRubroActionPerformed
+        // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
         porRubro bpr= new porRubro();
         bpr.setVisible(true);
         escritorio.add(bpr);
         escritorio.moveToFront(bpr);
-    }//GEN-LAST:event_jMenu2ActionPerformed
+    }//GEN-LAST:event_jmiPorRubroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,8 +150,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jmiPorRubro;
     // End of variables declaration//GEN-END:variables
 }
