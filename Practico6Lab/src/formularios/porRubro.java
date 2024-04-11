@@ -23,6 +23,7 @@ public class porRubro extends javax.swing.JInternalFrame {
      */
     public porRubro() {
         initComponents();
+        armarCabecera();
     }
 
     /**
@@ -38,7 +39,7 @@ public class porRubro extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtProductos = new javax.swing.JTable();
+        jtTabla = new javax.swing.JTable();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel1.setText("Listado de Productos por Rubro");
@@ -47,7 +48,7 @@ public class porRubro extends javax.swing.JInternalFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jtProductos.setModel(new javax.swing.table.DefaultTableModel(
+        jtTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -58,7 +59,7 @@ public class porRubro extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jtProductos);
+        jScrollPane1.setViewportView(jtTabla);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,7 +104,7 @@ public class porRubro extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jtProductos;
+    private javax.swing.JTable jtTabla;
     // End of variables declaration//GEN-END:variables
     
     private void armarCabecera(){
@@ -112,7 +113,7 @@ public class porRubro extends javax.swing.JInternalFrame {
         modelo.addColumn("Descripcion");
         modelo.addColumn("Precio");
         modelo.addColumn("Stock");
-        jtProductos.setModel(modelo);
+        jtTabla.setModel(modelo);
     }
 
 }
