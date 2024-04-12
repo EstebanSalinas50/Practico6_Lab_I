@@ -187,10 +187,11 @@ public class Menu extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     
     private void cargarProductos(){
-        listaProductos.add(new Producto(00, "arroz", 45, 125, "Comida"));
-        listaProductos.add(new Producto(01, "aceite", 65, 3, "Comida"));
-        listaProductos.add(new Producto(02, "cafe", 50, 9, "Comida"));
+        listaProductos.add(new Producto(00, "arroz", 45, 125, "Comestible"));
+        listaProductos.add(new Producto(01, "aceite", 65, 3, "Comestible"));
+        listaProductos.add(new Producto(02, "cafe", 50, 9, "Comestible"));
         listaProductos.add(new Producto(03, "lavandina", 125, 25, "Limpieza"));
+        listaProductos.add(new Producto(07, "Givenchy", 6799, 15, "Perfumeria"));
     }
     
 
