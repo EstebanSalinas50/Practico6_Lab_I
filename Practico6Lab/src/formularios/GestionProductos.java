@@ -150,10 +150,11 @@ public class GestionProductos extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -225,6 +226,12 @@ public class GestionProductos extends javax.swing.JInternalFrame {
             if (elementos.getCodigo() == code) {
                 listaProductos.remove(elementos);
                 JOptionPane.showMessageDialog(this, " Producto eliminado");
+                Codigo.setText("");
+                Descripcion.setText("");
+                Precio.setText("");
+                jCombo.setSelectedItem("");
+                Stock.setText("");
+                Eliminar.setEnabled(false);
                 return;
             }
 
@@ -234,25 +241,38 @@ public class GestionProductos extends javax.swing.JInternalFrame {
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+
+         
     }//GEN-LAST:event_SalirActionPerformed
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         // TODO add your handling code here:
-        
-            int code = Integer.parseInt(Codigo.getText());
-            for (Producto elementos : listaProductos) {
-                if (elementos.getCodigo() == code) {
-                  Descripcion.setText(elementos.getDescripcion());
-                  Precio.setText(elementos.getPrecio()+"");
-                  jCombo.setSelectedItem(elementos.getCategoria());
-                  Stock.setText(elementos.getStock()+"");
-                  Eliminar.setEnabled(true);
-                  return;
-                }
+
+        String codigo = Codigo.getText();
+
+        if (codigo.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Producto invalido");
+            return;
+        }
+        try{
+             int code = Integer.parseInt(Codigo.getText());
+        for (Producto elementos : listaProductos) {
+            if (elementos.getCodigo() == code) {
+                Descripcion.setText(elementos.getDescripcion());
+                Precio.setText(elementos.getPrecio() + "");
+                jCombo.setSelectedItem(elementos.getCategoria());
+                Stock.setText(elementos.getStock() + "");
+                Eliminar.setEnabled(true);
+                return;
             }
+        }           
+        }catch(Exception e){
+             JOptionPane.showMessageDialog(this, "ingrese numeros en el codigo ");
+        }
+       
     }//GEN-LAST:event_BuscarActionPerformed
-  
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buscar;

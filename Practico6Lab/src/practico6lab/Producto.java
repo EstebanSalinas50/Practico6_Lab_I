@@ -70,9 +70,13 @@ public class Producto implements Comparable<Producto> {
     }
 
     @Override
-    public int compareTo(Producto o) {
-
-        return Integer.compare(this.codigo, o.codigo);
+    public int compareTo(Producto x) {
+        if (this.codigo == x.codigo) {
+            return 0;
+        } else if (this.codigo > x.codigo) {
+            return 1;
+        } else {
+            return -1;
+        }
     }
-
 }
