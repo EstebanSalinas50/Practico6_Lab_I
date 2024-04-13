@@ -138,7 +138,7 @@ public class porNombre extends javax.swing.JInternalFrame {
         
         borrarFilas();
         
-        for (Producto variable : Menu.listaProductos) {
+        for (Producto variable : GestionProductos.listaProductos) {
             
             if(variable.getDescripcion().startsWith(jtfCampoDeBusqueda.getText())){
                 modelo.addRow( new Object [] {variable.getCodigo(), variable.getDescripcion(), variable.getPrecio(), variable.getCategoria(), variable.getCategoria() } );

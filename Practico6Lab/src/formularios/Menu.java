@@ -16,7 +16,7 @@ public class Menu extends javax.swing.JFrame {
     public static TreeSet<Producto> listaProductos = new TreeSet<>();
     
     
-    /**
+    /** 
      * Creates new form Menu
      */
     public Menu() {
