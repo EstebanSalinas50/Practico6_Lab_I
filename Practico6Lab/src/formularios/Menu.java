@@ -12,8 +12,7 @@ import practico6lab.Producto;
  * @author Blas
  */
 public class Menu extends javax.swing.JFrame {
-    
-    public static TreeSet<Producto> listaProductos = new TreeSet<>();
+  
     
     
     /** 
@@ -21,13 +20,7 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
-//        cargarProductos();
     }
-    
-    public TreeSet<Producto> getlistaProductos(){
-        return listaProductos;
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -200,14 +193,5 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmPorNombre;
     private javax.swing.JMenuItem jmPorRubro;
     // End of variables declaration//GEN-END:variables
-    
-//    private void cargarProductos(){
-//        listaProductos.add(new Producto(00, "arroz", 45, 125, "Comestible"));
-//        listaProductos.add(new Producto(01, "aceite", 65, 3, "Comestible"));
-//        listaProductos.add(new Producto(02, "cafe", 50, 9, "Comestible"));
-//        listaProductos.add(new Producto(03, "lavandina", 125, 25, "Limpieza"));
-//        listaProductos.add(new Producto(07, "Givenchy", 6799, 15, "Perfumeria"));
-//    }
-    
 
 }

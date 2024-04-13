@@ -3,8 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package formularios;
-
-import static formularios.Menu.listaProductos;
 import java.util.TreeSet;
 import javax.swing.JOptionPane;
 import practico6lab.Producto;
@@ -300,6 +298,6 @@ public class GestionProductos extends javax.swing.JInternalFrame {
         listaProductos.add(new Producto(01, "aceite", 65, 3, "Comestible"));
         listaProductos.add(new Producto(02, "cafe", 50, 9, "Comestible"));
         listaProductos.add(new Producto(03, "lavandina", 125, 25, "Limpieza"));
-        listaProductos.add(new Producto(07, "Givenchy", 6799, 15, "Perfumeria"));
+        listaProductos.add(new Producto(04, "Givenchy", 6799, 15, "Perfumeria"));
     }
 }

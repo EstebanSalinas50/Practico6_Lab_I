@@ -107,7 +107,7 @@ public class porRubro extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
        borrarFilas();
        String cat = (String)jcbCategoria.getSelectedItem();
-       for(Producto prod: Menu.listaProductos){
+       for(Producto prod: GestionProductos.listaProductos){
            
            if(prod.getCategoria().equals(cat)){
            
