@@ -4,6 +4,7 @@
  */
 package formularios;
 
+import static formularios.Menu.listaProductos;
 import java.util.TreeSet;
 import javax.swing.JOptionPane;
 import practico6lab.Producto;
@@ -14,13 +15,14 @@ import practico6lab.Producto;
  */
 public class GestionProductos extends javax.swing.JInternalFrame {
 
-    private TreeSet<Producto> listaProductos = new TreeSet<>();
+    public static TreeSet<Producto> listaProductos = new TreeSet<>();
 
     /**
      * Creates new form GestionProductos
      */
     public GestionProductos() {
         initComponents();
+        cargarProductos();
     }
 
     /**
@@ -293,4 +295,11 @@ public class GestionProductos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jStock;
     // End of variables declaration//GEN-END:variables
 
+ private void cargarProductos(){
+        listaProductos.add(new Producto(00, "arroz", 45, 125, "Comestible"));
+        listaProductos.add(new Producto(01, "aceite", 65, 3, "Comestible"));
+        listaProductos.add(new Producto(02, "cafe", 50, 9, "Comestible"));
+        listaProductos.add(new Producto(03, "lavandina", 125, 25, "Limpieza"));
+        listaProductos.add(new Producto(07, "Givenchy", 6799, 15, "Perfumeria"));
+    }
 }

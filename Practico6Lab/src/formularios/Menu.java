@@ -21,7 +21,7 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
-        cargarProductos();
+//        cargarProductos();
     }
     
     public TreeSet<Producto> getlistaProductos(){
@@ -90,6 +90,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu2.add(jmPorNombre);
 
         jMenuItem4.setText("Por Precio...");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem4);
 
         jMenuBar1.add(jMenu2);
@@ -140,6 +145,16 @@ public class Menu extends javax.swing.JFrame {
         escritorio.moveToFront(bpn);
     }//GEN-LAST:event_jmPorNombreActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        PorPrecio pre= new PorPrecio();
+        pre.setVisible(true);
+        escritorio.add(pre);
+        escritorio.moveToFront(pre);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -186,13 +201,13 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmPorRubro;
     // End of variables declaration//GEN-END:variables
     
-    private void cargarProductos(){
-        listaProductos.add(new Producto(00, "arroz", 45, 125, "Comestible"));
-        listaProductos.add(new Producto(01, "aceite", 65, 3, "Comestible"));
-        listaProductos.add(new Producto(02, "cafe", 50, 9, "Comestible"));
-        listaProductos.add(new Producto(03, "lavandina", 125, 25, "Limpieza"));
-        listaProductos.add(new Producto(07, "Givenchy", 6799, 15, "Perfumeria"));
-    }
+//    private void cargarProductos(){
+//        listaProductos.add(new Producto(00, "arroz", 45, 125, "Comestible"));
+//        listaProductos.add(new Producto(01, "aceite", 65, 3, "Comestible"));
+//        listaProductos.add(new Producto(02, "cafe", 50, 9, "Comestible"));
+//        listaProductos.add(new Producto(03, "lavandina", 125, 25, "Limpieza"));
+//        listaProductos.add(new Producto(07, "Givenchy", 6799, 15, "Perfumeria"));
+//    }
     
 
 }
