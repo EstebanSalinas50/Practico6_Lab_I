@@ -241,9 +241,7 @@ public class GestionProductos extends javax.swing.JInternalFrame {
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-
-         
+        this.dispose();      
     }//GEN-LAST:event_SalirActionPerformed
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed

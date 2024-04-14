@@ -139,9 +139,10 @@ public class PorPrecio extends javax.swing.JInternalFrame {
             String num = jtdos.getText();
             if (!num.isEmpty()) {
                 borrarFilas();
+                double nume = Double.parseDouble(jtuno.getText());
                 double numero = Double.parseDouble(jtdos.getText());
                 for (Producto pro : GestionProductos.listaProductos) {
-                    if (pro.getPrecio() <= numero) {
+                    if (pro.getPrecio()>=nume && pro.getPrecio() <= numero) {
                         modelo.addRow(new Object[]{
                             pro.getCodigo(),
                             pro.getCategoria(),
